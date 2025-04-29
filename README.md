@@ -41,7 +41,7 @@ The app stores reminders in Firebase Firestore. Each reminder includes:
 
 /AllReminders - page for showing all reminders
 
-![All Reminders](documentation/all-remidners.jpg)
+![All Reminders](documentation/all-reminders.jpg)
 
 /edit - page for editing reminders
 
@@ -49,7 +49,7 @@ The app stores reminders in Firebase Firestore. Each reminder includes:
 
 ## Site map
 
-![Site Map](documentation/site-map-png)
+![Site Map](documentation/site-map.png)
 
 ## User Stories or Use Cases
 
