@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 
 function AllReminders() {
   const [reminders, setReminders] = useState([]);
+  //adding a search function for another form
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     const fetchReminders = async () => {
@@ -23,14 +25,32 @@ function AllReminders() {
     fetchReminders();
   }, []);
 
+  //searching for both description and title key words
+  const filteredReminders = reminders.filter(reminder =>
+    reminder.title.toLowerCase().includes(search.toLowerCase()) ||
+    reminder.description.toLowerCase().includes(search.toLowerCase())
+  );
+
+
   return (
     <div style={{ padding: '2rem' }}>
       <h1>All Reminders</h1>
-      {reminders.length === 0 ? (
-        <p>No reminders found.</p>
+
+      {/* search Bar */}
+      <input
+        type="text"
+        placeholder="Search reminders by title"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        style={{ marginBottom: '1rem', padding: '0.5rem', width: '100%' }}
+      />
+      {/* filtered results */}
+      {filteredReminders.length === 0 ? (
+        //no matches msg
+        <p>No matching reminders found.</p>
       ) : (
         <ul>
-          {reminders.map(reminder => (
+          {filteredReminders.map(reminder => (
             <li key={reminder.id}>
               <strong>{reminder.title}</strong><br />
               {reminder.description}<br />
@@ -40,6 +60,7 @@ function AllReminders() {
           ))}
         </ul>
       )}
+
       <Link to="/">Create another reminder</Link>
     </div>
   );
