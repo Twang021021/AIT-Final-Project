@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+//updated with deleteDoc and updateDoc
+import { collection, getDocs, doc, deleteDoc, updateDoc } from 'firebase/firestore';
 import db from './firebase';
 import { Link } from 'react-router-dom';
 
@@ -45,7 +46,34 @@ function AllReminders() {
     return searchMatch && dateMatch;
   });
 
-  
+  //delete reminders
+  const handleDelete = async (id) => {
+    try {
+      await deleteDoc(doc(db, 'reminders', id));
+      setReminders(reminders.filter(reminder => reminder.id !== id));
+    } catch (error) {
+      console.error('Error deleting reminder:', error);
+    }
+  };
+
+  //snooze reminders for *1 day
+  const handleSnooze = async (reminder) => {
+    try {
+      const reminderRef = doc(db, 'reminders', reminder.id);
+      const newDate = new Date(reminder.date);
+      newDate.setDate(newDate.getDate() + 1); // Add *1 day (1 is arbitrary for now)
+      const newDateString = newDate.toISOString().split('T')[0];
+
+      await updateDoc(reminderRef, { date: newDateString });
+
+      // Update UI immediately
+      setReminders(reminders.map(r => 
+        r.id === reminder.id ? { ...r, date: newDateString } : r
+      ));
+    } catch (error) {
+      console.error('Error snoozing reminder:', error);
+    }
+  };
 
 
   return (
@@ -93,6 +121,9 @@ function AllReminders() {
               Due: {reminder.date}
               <br />
               <Link to={`/edit/${reminder.id}`}>Edit</Link>
+              <Link to={`/edit/${reminder.id}`}>Edit</Link> |{" "}
+              <button onClick={() => handleDelete(reminder.id)}>Delete</button> |{" "}
+              <button onClick={() => handleSnooze(reminder)}>Snooze +1 Day</button>
               <hr />
             </li>
           ))}
