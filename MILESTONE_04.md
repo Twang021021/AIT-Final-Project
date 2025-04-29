@@ -81,23 +81,26 @@ Description of research topics above with points
 
 2 points: Added Delete and Snooze (+1 day) custom features using Firebase `deleteDoc` and `updateDoc`, combined with local state syncing. Server-side  and Client side JavaScript library or module that we did not cover in class
 
-**Total: 10 points**
-
+Links to github line number(s) for research topics described above (one link per line)
 ---
 https://github.com/nyu-csci-ua-0467-001-002-spring-2025/final-project-deployment-Twang021021/blob/master/src/main.jsx#L10-L21  
 (React Router setup)
 
-https://github.com/nyu-csci-ua-0467-001-002-spring-2025/final-project-deployment-Twang021021/blob/master/vite.config.js
-(Vite set up vite.config.js)
+https://github.com/nyu-csci-ua-0467-001-002-spring-2025/final-project-deployment-Twang021021/blob/master/vite.config.js  
+(Vite build tool + plugin usage)
 
 https://github.com/nyu-csci-ua-0467-001-002-spring-2025/final-project-deployment-Twang021021/blob/master/vite.config.js#L5-L9  
-(Vite ESLint plugin integration)
+(ESLint plugin integration via Vite)
 
-https://github.com/nyu-csci-ua-0467-001-002-spring-2025/final-project-deployment-Twang021021/blob/master/src/AllReminders.jsx#L80-L90  
+https://github.com/nyu-csci-ua-0467-001-002-spring-2025/final-project-deployment-Twang021021/blob/master/eslint.config.js  
+(Flat ESLint v9+ config with JSX and React support)
+
+https://github.com/nyu-csci-ua-0467-001-002-spring-2025/final-project-deployment-Twang021021/blob/master/src/AllReminders.jsx#L49-L57  
 (Delete reminder logic)
 
-https://github.com/nyu-csci-ua-0467-001-002-spring-2025/final-project-deployment-Twang021021/blob/master/src/AllReminders.jsx#L91-L97  
+https://github.com/nyu-csci-ua-0467-001-002-spring-2025/final-project-deployment-Twang021021/blob/master/src/AllReminders.jsx#L59-L76  
 (Snooze +1 day logic)
+
 
 
 
