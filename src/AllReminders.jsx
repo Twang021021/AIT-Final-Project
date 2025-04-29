@@ -120,7 +120,6 @@ function AllReminders() {
               {reminder.description}<br />
               Due: {reminder.date}
               <br />
-              <Link to={`/edit/${reminder.id}`}>Edit</Link>
               <Link to={`/edit/${reminder.id}`}>Edit</Link> |{" "}
               <button onClick={() => handleDelete(reminder.id)}>Delete</button> |{" "}
               <button onClick={() => handleSnooze(reminder)}>Snooze +1 Day</button>
