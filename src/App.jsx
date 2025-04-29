@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { collection, addDoc } from 'firebase/firestore';
 import db from './firebase'; 
 
@@ -59,6 +59,13 @@ function App() {
 
         <button type="submit">Submit Reminder</button>
       </form>
+      {/*button to view AllReminders */}
+      <div>
+        <Link to="/all">
+          <button>Show All Reminders</button>
+        </Link>
+      </div>
+
     </div>
   );
 }
