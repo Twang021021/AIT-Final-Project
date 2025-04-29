@@ -17,7 +17,8 @@ URL for deployed site
 ---
 Use GitHub Codespaces to run  
 (use `npm install` and then `npm run dev` inside Codespaces)
-http://localhost:5173/  
+https://super-eureka-x59vgvpgw6w53x5x-5173.app.github.dev/
+
 
 URL for form 1 (from previous milestone) 
 ---
