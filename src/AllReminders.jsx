@@ -91,6 +91,8 @@ function AllReminders() {
               <strong>{reminder.title}</strong><br />
               {reminder.description}<br />
               Due: {reminder.date}
+              <br />
+              <Link to={`/edit/${reminder.id}`}>Edit</Link>
               <hr />
             </li>
           ))}
