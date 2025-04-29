@@ -8,6 +8,10 @@ function AllReminders() {
   //adding a search function for another form
   const [search, setSearch] = useState('');
 
+  //adding date filter option (kind of like what they use for purchasing plane tickets)
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+
   useEffect(() => {
     const fetchReminders = async () => {
       try {
@@ -25,11 +29,23 @@ function AllReminders() {
     fetchReminders();
   }, []);
 
-  //searching for both description and title key words
-  const filteredReminders = reminders.filter(reminder =>
-    reminder.title.toLowerCase().includes(search.toLowerCase()) ||
-    reminder.description.toLowerCase().includes(search.toLowerCase())
-  );
+  //searching for both description and title key words ; added search with dates
+  const filteredReminders = reminders.filter(reminder => {
+    const searchMatch =
+      reminder.title.toLowerCase().includes(search.toLowerCase()) ||
+      reminder.description.toLowerCase().includes(search.toLowerCase());
+
+    const date = reminder.date;
+    const dateMatch =
+      (!startDate && !endDate) ||
+      (startDate && !endDate && date >= startDate) ||
+      (!startDate && endDate && date <= endDate) ||
+      (startDate && endDate && date >= startDate && date <= endDate);
+
+    return searchMatch && dateMatch;
+  });
+
+  
 
 
   return (
@@ -44,6 +60,26 @@ function AllReminders() {
         onChange={(e) => setSearch(e.target.value)}
         style={{ marginBottom: '1rem', padding: '0.5rem', width: '100%' }}
       />
+
+
+      {/* date picker */}
+      <div style={{ marginBottom: '1rem' }}>
+        <label>Filter by Date Range:</label><br />
+        <input
+          type="date"
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
+          style={{ marginRight: '0.5rem', padding: '0.5rem' }}
+        />
+        <input
+          type="date"
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.value)}
+          style={{ padding: '0.5rem' }}
+        />
+      </div>
+
+
       {/* filtered results */}
       {filteredReminders.length === 0 ? (
         //no matches msg
