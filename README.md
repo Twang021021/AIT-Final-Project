@@ -5,8 +5,6 @@
 
 ## Overview
 
-(__TODO__: a brief one or two paragraph, high-level description of your project)
-
 The Reminder app is a web application that allows user to create and view reminders. Also has the function to search by keywords in reminder name or description, filter by date, and delete or snooze(by 1 day) personal reminders. The reminders are stored with firebase in firestore and updates accordingly with edits, deletions, and snoozes.
 
 The application uses Firebase Firestore as a backend to persist reminder data and React.js for the frontend UI. It is deployed and runnable directly inside GitHub Codespaces using Vite for hot-reloading development.
